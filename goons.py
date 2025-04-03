@@ -3,8 +3,9 @@ import pygame
 class Goons(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
+        screen = pygame.display.set_mode((1280,720))
         self.image = pygame.Surface((50, 50))
-        self.image.fill((255, 0, 0))  
+        self.image.fill((255, 0 , 0))  
         self.rect = self.image.get_rect()
         self.rect.topleft = (x, y)
         self.speed = 5
@@ -36,7 +37,7 @@ def main():
         keys = pygame.key.get_pressed()
         all_sprites.update(keys)
 
-        screen.fill((0, 0, 0))  
+        screen.fill((255, 255, 255))  
         all_sprites.draw(screen)
         pygame.display.flip()
         clock.tick(60)
