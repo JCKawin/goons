@@ -19,7 +19,8 @@ class Goons():
                     sys.exit()
             
             self.chrc.blitme()
-            self.screen.fill((255,255,255))
+            pygame.display.update()
+            self.screen.fill((0,0,0))
             self.clock.tick(60)
             pygame.display.flip()
 
@@ -31,6 +32,6 @@ class Goons():
 
 
 
-
-player: Goons = Goons()
-player.run_game()
+if __name__=="__main__":
+    player: Goons = Goons()
+    player.run_game()
