@@ -16,16 +16,23 @@ class Goons():
 
     def rungame(self):
         while self.running:
-            for event in pygame.event.get():
+             self._check_events()
+             self._update_events()
+      
+    def _check_events(self):
+        for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-            
-            self.screen.fill((self.setting.bg_color))
-            self.chrc.blitme()
-            pygame.display.update()
-            pygame.display.flip()
-            self.clock.tick(30)
+
+    def _update_events(self):
+         self.screen.fill((self.setting.bg_color))
+         self.chrc.blitme()
+         pygame.display.update()
+         pygame.display.flip()
+         self.clock.tick(30)
+         
+
 
 
 
