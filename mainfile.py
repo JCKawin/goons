@@ -1,18 +1,19 @@
 import pygame
-import sys
 import m_char
 import settings
 
 class Goons():
     def __init__(self):
         pygame.init()
+        pygame.display.init()
         self.setting = settings.setting(self)
-        self.screen = pygame.display.set_mode(self.setting.screen_res)
+        self.screen = pygame.display.set_mode(self.setting.screen_res,pygame.OPENGL)
         self.chrc = m_char.character(self)
         self.running: bool = True
         self.clock = pygame.time.Clock()
 
     def __del__(self):
+         pygame.display.quit()
          pygame.quit()
 
 
@@ -25,15 +26,15 @@ class Goons():
     def _check_events(self):
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
+                    self.running = False
+
 
     def _update_events(self):
          self.screen.fill((self.setting.bg_color))
          self.chrc.blitme()
-         pygame.display.update()
+    
          pygame.display.flip()
-         self.clock.tick(30)
+         self.clock.tick(60)
          
 
 
