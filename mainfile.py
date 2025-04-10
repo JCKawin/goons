@@ -1,28 +1,31 @@
 import pygame
 import sys
 import m_char
+import settings
 
 class Goons():
     def __init__(self):
         pygame.init()
-        self.screen = pygame.display.set_mode((600,400))
+        self.setting = settings.setting(self)
+        self.screen = pygame.display.set_mode(self.setting.screen_res)
+        self.chrc = m_char.character(self)
         self.running: bool = True
         self.clock = pygame.time.Clock()
-        self.chrc = m_char.character(self)
 
 
-    def run_game(self):
+
+    def rungame(self):
         while self.running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
             
+            self.screen.fill((self.setting.bg_color))
             self.chrc.blitme()
             pygame.display.update()
-            self.screen.fill((0,0,0))
-            self.clock.tick(60)
             pygame.display.flip()
+            self.clock.tick(30)
 
 
 
@@ -34,4 +37,4 @@ class Goons():
 
 if __name__=="__main__":
     player: Goons = Goons()
-    player.run_game()
+    player.rungame()
