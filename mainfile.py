@@ -12,6 +12,9 @@ class Goons():
         self.running: bool = True
         self.clock = pygame.time.Clock()
 
+    def __del__(self):
+         pygame.quit()
+
 
 
     def rungame(self):
@@ -45,3 +48,4 @@ class Goons():
 if __name__=="__main__":
     player: Goons = Goons()
     player.rungame()
+    del player
