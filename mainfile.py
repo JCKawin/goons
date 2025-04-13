@@ -1,6 +1,7 @@
 import pygame
 import m_char
 import settings
+import bootloader
 
 class Goons():
     def __init__(self):
@@ -10,6 +11,7 @@ class Goons():
         self.chrc = m_char.character(self)
         self.running: bool = True
         self.clock = pygame.time.Clock()
+        load = bootloader.loader(self)
 
     def __del__(self):
          pygame.display.quit()
@@ -24,7 +26,7 @@ class Goons():
       
     def _check_events(self):
         for event in pygame.event.get():
-                key = pygame.key.get_pressed()
+                
                 if event.type == pygame.QUIT: self.running = False
                 elif event.type == pygame.KEYDOWN: self._keydown(event)
                 elif event.type == pygame.KEYUP: self._keyup(event)
