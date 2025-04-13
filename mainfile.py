@@ -33,23 +33,23 @@ class Goons():
                 
 
     def _keydown(self,event):
-         if event.key == pygame.K_d:
+         if event.key == pygame.K_d or event.key == pygame.K_RIGHT:
               self.chrc.move_dir[3] = True
-         if event.key == pygame.K_s:
+         if event.key == pygame.K_s or event.key == pygame.K_DOWN:
               self.chrc.move_dir[1] = True
-         if event.key == pygame.K_a:
+         if event.key == pygame.K_a or event.key == pygame.K_LEFT:
               self.chrc.move_dir[2] = True
-         if event.key == pygame.K_w:
+         if event.key == pygame.K_w or event.key == pygame.K_UP:
               self.chrc.move_dir[0] = True
 
     def _keyup(self,event):
-         if event.key == pygame.K_d:
+         if event.key == pygame.K_d or event.key == pygame.K_RIGHT:
               self.chrc.move_dir[3] = False
-         if event.key == pygame.K_s:
+         if event.key == pygame.K_s or event.key == pygame.K_DOWN:
               self.chrc.move_dir[1] = False
-         if event.key == pygame.K_a:
+         if event.key == pygame.K_a or event.key == pygame.K_LEFT: 
               self.chrc.move_dir[2] = False
-         if event.key == pygame.K_w:
+         if event.key == pygame.K_w or event.key == pygame.K_UP:
               self.chrc.move_dir[0] = False
 
          
