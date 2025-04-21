@@ -3,7 +3,7 @@ import m_char
 import settings
 import bootloader
 
-class Goons():
+class Goons:
     def __init__(self):
         pygame.init()
         pygame.display.init()
@@ -56,7 +56,7 @@ class Goons():
 
 
     def _update_events(self):
-         self.screen.fill((settings.bg_color))
+         self.screen.fill(settings.bg_color)
          self.chrc.update()
          self.chrc.blitme()    
          pygame.display.flip()

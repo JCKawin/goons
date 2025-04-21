@@ -1,5 +1,4 @@
 import pygame
-import time
 import settings as set
 
 class loader():
