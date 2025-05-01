@@ -2,6 +2,9 @@ import pygame
 import m_char
 import settings
 import bootloader
+import object
+import gameover
+import sys
 
 class Goons:
     def __init__(self):
@@ -12,8 +15,10 @@ class Goons:
         self.running: bool = True
         self.clock = pygame.time.Clock()
         load = bootloader.loader(self)
+        load.run()
+        self.object = object.object(self)
 
-    def __del__(self):
+    def __del__(self):            
          pygame.display.quit()
          pygame.quit()
 
@@ -23,11 +28,13 @@ class Goons:
         while self.running:
              self._update_events()
              self._check_events()
+        else:
+             self._endsceen()
       
     def _check_events(self):
         for event in pygame.event.get():
                 
-                if event.type == pygame.QUIT: self.running = False
+                if event.type == pygame.QUIT: sys.exit()
                 elif event.type == pygame.KEYDOWN: self._keydown(event)
                 elif event.type == pygame.KEYUP: self._keyup(event)
                 
@@ -58,21 +65,25 @@ class Goons:
     def _update_events(self):
          self.screen.fill(settings.bg_color)
          self.chrc.update()
-         self.chrc.blitme()    
+         self.chrc.blitme()
+         self.object.blitme()
+         self._checkcollision()    
          pygame.display.flip()
          self.clock.tick(60)
+
+
+    def _checkcollision(self):
+         if self.chrc.rect.colliderect(self.object.handle_rect):
+              self.running =False
+
+    def _endsceen(self):
+         end = gameover.gameover(self)
+         end.run()             
+                 
+         
          
 
 
-
-
-
-
-
-
-
-
-if __name__=="__main__":
-    player: Goons = Goons()
-    player.rungame()
-    del player
+player: Goons = Goons()
+player.rungame()
+del player
