@@ -1,3 +1,4 @@
+import math
 import pygame
 import m_char
 import settings
@@ -73,8 +74,14 @@ class Goons:
 
 
     def _checkcollision(self):
-         if self.chrc.rect.colliderect(self.object.handle_rect):
+         if self.__distance() <= 15:
               self.running =False
+
+    def __distance(self):
+         return int(math.sqrt(math.pow(self.chrc.rect[0]-self.object.handle_rect[0],2)+math.pow(self.chrc.rect[1]-self.object.handle_rect[1],2)))
+        
+         
+
 
     def _endsceen(self):
          end = gameover.gameover(self)
