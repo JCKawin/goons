@@ -10,8 +10,8 @@ class character(pygame.sprite.Sprite):
         self.image = pygame.image.load("images\\m_char.bmp")
         self.rect = self.image.get_rect()
 
-        self.rect.x = 256
-        self.rect.y = 256
+        self.rect.x = 0
+        self.rect.y = 0
         # [ up0 , down1 , right2 , left3 ]
         self.move_dir = [False , False , False , False]
 
