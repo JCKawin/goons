@@ -7,7 +7,7 @@ class character(pygame.sprite.Sprite):
         self.screen = main.screen
         self.screen_rect = main.screen.get_rect()
 
-        self.image = pygame.image.load("images\\m_char.bmp")
+        self.image = pygame.image.load("images\\goon_mc.png")
         self.rect = self.image.get_rect()
 
         self.rect.x = 0
